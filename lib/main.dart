@@ -42,10 +42,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: BlocListener<CounterCubit, CounterState>(
         listener: (context, state) {
           if (state.wasIncremented) {
-            SnackBar mySnackBar = SnackBar(content: Text('Increment'), duration: Duration(microseconds: 400),);
+            SnackBar mySnackBar = SnackBar(content: Text('Increment'), duration: Duration(milliseconds: 400),);
             ScaffoldMessenger.of(context).showSnackBar(mySnackBar);
           }  else{
-            SnackBar mySnackBar = SnackBar(content: Text('Decrement'), duration: Duration(microseconds: 400),);
+            SnackBar mySnackBar = SnackBar(content: Text('Decrement'), duration: Duration(milliseconds: 400),);
             ScaffoldMessenger.of(context).showSnackBar(mySnackBar);
           }
         },
