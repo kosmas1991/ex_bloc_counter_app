@@ -1,66 +1,18 @@
-import 'package:ex_bloc_counter_app/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'secondPage.dart';
+import 'counter_cubit.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final CounterCubit _counterCubit = CounterCubit();
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider<CounterCubit>(
-      create: (context) => CounterCubit(),
-      child: MaterialApp(
-        routes: {
-          '/': (context) => BlocProvider<CounterCubit>.value(
-                value: _counterCubit,
-                child: MyHomePage(
-                  title: 'Flutter Demo Home Page',
-                ),
-              ),
-          '/second': (context) => BlocProvider<CounterCubit>.value(
-                value: _counterCubit,
-                child: MySecondPage(
-                  title: 'My second Page',
-                ),
-              )
-        },
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        // home: MyHomePage(title: 'Flutter Demo Home Page'),
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _counterCubit.close();
-    super.dispose();
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MySecondPage extends StatefulWidget {
+  MySecondPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MySecondPageState createState() => _MySecondPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MySecondPageState extends State<MySecondPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,9 +52,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/second');
+                    Navigator.of(context).pop();
                   },
-                  child: Text('Go to Second')),
+                  child: Text('Go Back')),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -121,8 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        color: Colors.black,
-                        shape: BoxShape.circle
+                      color: Colors.black,
+                      shape: BoxShape.circle
                     ),
                     child: IconButton(
                       color: Colors.greenAccent,
@@ -135,7 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
                 ],
               )
-
             ],
           ),
         ),
