@@ -116,6 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: Icon(Icons.exposure_minus_1),
                       onPressed: () {
                         BlocProvider.of<CounterCubit>(context).decrement();
+                        //context.read<CounterCubit>().decrement();
                       },
                     ),
                   ),
